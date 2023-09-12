@@ -12,10 +12,16 @@
  *  find([1, 2, 3], (element) => element < 0);
  *  //> undefined
  */
+//followed along in class for this one 
 function find(array, callback) {
+  let result; 
   for (let element of array) {
     // Write your code here.
+    if (callback(element)) {
+      return element; 
+    }
   }
+  return result;
 }
 
 /**
@@ -33,11 +39,17 @@ function find(array, callback) {
  *  //> []
  */
 function filter(array, callback) {
-  const result = [];
+  // const result = [];
+  let newArr = [];
   for (let element of array) {
     // Write your code here.
+    if (callback(element)) {
+      newArr.push(element)
+      // return newArr
+    }
   }
-  return result;
+  // I changed return result since result was a const variable and added my own 
+  return newArr; 
 }
 
 /**
@@ -55,11 +67,14 @@ function filter(array, callback) {
  *  //> []
  */
 function map(array, callback) {
-  const result = [];
+  // const result = [];
+  let newArr = [];
   for (let element of array) {
     // Write your code here.
+    //this basically serves as its own boolean/control flow 
+      newArr.push(callback(element));   
   }
-  return result;
+  return newArr;
 }
 
 /**
@@ -78,6 +93,7 @@ function map(array, callback) {
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
     // Write your code here.
+    callback(array[i], i, array);   
   }
 }
 
