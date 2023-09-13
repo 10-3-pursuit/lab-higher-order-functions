@@ -15,7 +15,7 @@
  */
 function find(array, callback) {
   for (let element of array) {
-    if (callback(element)) {
+    if (callback(element)) { // callback function takes only 1 parameter which is element. The callback function output is a boolean (true or false)
       return element
     }
   }
@@ -74,7 +74,7 @@ function map(array, callback) {
  * @param {function} callback - A callback that accepts three arguments: element, index, and the entire array.
  *
  * EXAMPLE:
- *  forEach([10, 20, 30], (element, index, array) => {
+ *  forEach([10, 20, 30], (element, index, array) => { //this function takes in 2 parameters; the callback function takes 3 parameters
  *    console.log(element, index, array.length)
  *  });
  *  //> 10 0 3
@@ -83,7 +83,7 @@ function map(array, callback) {
  */
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
-  callback(array[i],i,array);
+  callback(array[i],i,array); // this call back function accepts 3 arguments
   }
 };
 
