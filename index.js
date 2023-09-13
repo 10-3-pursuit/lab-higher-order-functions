@@ -13,9 +13,13 @@
  *  //> undefined
  */
 function find(array, callback) {
+  let result;
   for (let element of array) {
-    // Write your code here.
+    if( callback(element) ){
+      return element
+    }
   }
+  return undefined;
 }
 
 /**
@@ -32,10 +36,26 @@ function find(array, callback) {
  *  filter([1, 2, 3], (element) => element < 0);
  *  //> []
  */
+
+const callback = (bool) => {
+  if(!!bool){
+    return true
+  } else {
+    return false
+  }
+}
+
+const truthyValue = callback(' ')
+
+console.log('Value for callback evaluation:', truthyValue)
+const falseyValue = callback('')
+
 function filter(array, callback) {
   const result = [];
   for (let element of array) {
-    // Write your code here.
+    if( callback(element)){
+      result.push(element)
+    }
   }
   return result;
 }
@@ -57,7 +77,8 @@ function filter(array, callback) {
 function map(array, callback) {
   const result = [];
   for (let element of array) {
-    // Write your code here.
+    const transformedElement = callback(element);
+    result.push(transformedElement)
   }
   return result;
 }
@@ -75,9 +96,13 @@ function map(array, callback) {
  *  //> 20 1 3
  *  //> 30 2 3
  */
+
+// NO RETURNS 
+// Passes each 1. Element 2. Index 3. Array
+
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    // Write your code here.
+    callback(array[i], i, array);
   }
 }
 
