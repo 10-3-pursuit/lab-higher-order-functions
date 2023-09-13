@@ -1,10 +1,11 @@
 /**
  * Returns the first element in the array that causes the callback to return `true`. Otherwise, returns `undefined`.
- * @param {*[]} array - An array of elements. Could be anything!
+ * @param {*[]} array - An array of elements. The "*" means the input can be an array of any data type.
  * @param {function} callback - A callback that accepts a single argument. Returns a value.
  * @returns {*|undefined} The first element that causes the callback to return a truthy value. Otherwise, returns `undefined`.
  *
  * EXAMPLE:
+ * // The data type of the first parameter
  *  find([1, 2, 3], (element) => element > 1);
  *  //> 2
  *
@@ -14,8 +15,11 @@
  */
 function find(array, callback) {
   for (let element of array) {
-    // Write your code here.
+    if (callback(element)) {
+      return element
+    }
   }
+  return undefined;
 }
 
 /**
@@ -35,7 +39,9 @@ function find(array, callback) {
 function filter(array, callback) {
   const result = [];
   for (let element of array) {
-    // Write your code here.
+    if (callback(element)) {
+      result.push(element);
+    }
   }
   return result;
 }
@@ -57,7 +63,7 @@ function filter(array, callback) {
 function map(array, callback) {
   const result = [];
   for (let element of array) {
-    // Write your code here.
+    result.push(callback(element));
   }
   return result;
 }
@@ -77,9 +83,9 @@ function map(array, callback) {
  */
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    // Write your code here.
+  callback(array[i],i,array);
   }
-}
+};
 
 // Do not change the code below this line.
 module.exports = { find, filter, map, forEach };
