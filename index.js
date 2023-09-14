@@ -12,11 +12,20 @@
  *  find([1, 2, 3], (element) => element < 0);
  *  //> undefined
  */
-function find(array, callback) {
-  for (let element of array) {
 
+function find(array, callback) {
+  // Iterate through each element in the input array.
+  for (let element of array) {
+    // Check if the callback function returns true for the current element.
+    if (callback(element)) {
+      // If the condition is met, return the current element.
+      return element;
+    }
   }
+  // If no element satisfies the condition, return undefined.
+  return undefined;
 }
+
 
 /**
  * Returns an array of all elements in the array that cause the callback to return `true`. If the array is empty or no elements cause the callback to return `true`, then return an empty array.
@@ -41,15 +50,23 @@ function find(array, callback) {
 //   }
 // }
 
-
-
-
 function filter(array, callback) {
+  // Initialize an empty array to store the filtered elements.
   const result = [];
+
+  // Iterate through each element in the input array.
   for (let element of array) {
-    // Write your code here.
+    // Check if the callback function returns true for the current element.
+    if (callback(element)) {
+      // If the condition is met, add the current element to the result array.
+      result.push(element);
+    }
   }
+  
+  // Return the array containing the filtered elements.
+  return result;
 }
+
 
 /**
  * Returns an array where each element is transformed by the callback. If the array is empty, return an empty array.
@@ -65,16 +82,26 @@ function filter(array, callback) {
  *  map([], (element) => element < 0);
  *  //> []
  */
+
 function map(array, callback) {
+  // Initialize an empty array to store the transformed elements.
   const result = [];
+
+  // Iterate through each element in the input array.
   for (let element of array) {
-    // Write your code here.
+    // Apply the callback function to the current element and store the result.
+    const transformedElement = callback(element);
+    
+    // Add the transformed element to the result array.
+    result.push(transformedElement);
   }
+  
+  // Return the array containing the transformed elements.
   return result;
 }
 
-/**
- * Does not return anything. Passes each element of the array into the callback along with the index and the array, in that order.
+
+/** Does not return anything. Passes each element of the array into the callback along with the index and the array, in that order.
  * @param {*[]} array - An array of elements. Could be anything!
  * @param {function} callback - A callback that accepts three arguments: element, index, and the entire array.
  *
@@ -86,10 +113,14 @@ function map(array, callback) {
  *  //> 20 1 3
  *  //> 30 2 3
  */
+
 function forEach(array, callback) {
+  // Use a for loop to iterate through each element of the array.
   for (let i = 0; i < array.length; i++) {
-    // Write your code here.
+    // Call the callback function with the current element, index, and the entire array.
+    callback(array[i], i, array);
   }
+  // Note that this function does not return anything.
 }
 
 // Do not change the code below this line.
