@@ -14,9 +14,12 @@
  */
 function find(array, callback) {
   for (let element of array) {
-
+    if(callback(element)){
+      return element;
+    }
   }
-}
+    return undefined;
+};
 
 /**
  * Returns an array of all elements in the array that cause the callback to return `true`. If the array is empty or no elements cause the callback to return `true`, then return an empty array.
@@ -48,8 +51,12 @@ function filter(array, callback) {
   const result = [];
   for (let element of array) {
     // Write your code here.
+    if(callback(element)){
+      result.push(element);
+    }
   }
-}
+  return result;
+};
 
 /**
  * Returns an array where each element is transformed by the callback. If the array is empty, return an empty array.
@@ -69,9 +76,12 @@ function map(array, callback) {
   const result = [];
   for (let element of array) {
     // Write your code here.
+    //assume the callback function is doing logic to transform the param(element)
+    let transElement = callback(element);
+    result.push(transElement);
   }
   return result;
-}
+};
 
 /**
  * Does not return anything. Passes each element of the array into the callback along with the index and the array, in that order.
@@ -89,8 +99,12 @@ function map(array, callback) {
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
     // Write your code here.
+    // ::Recieved help here::
+    //must come back to study. still not understanding::
+    let element = array[i];
+    callback(element, i, array);
   }
-}
+};
 
 // Do not change the code below this line.
 module.exports = { find, filter, map, forEach };
